@@ -2,12 +2,12 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://mazhuang.org
+url:
 date_format: "ordinal"
-title: 码志
+title: 大星博客
 subtitle: "打码改变人生"
-description: "马壮的个人博客"
-keywords: 码志, Zhuang Ma, mzlogin, mazhuang
+description: "大星的个人博客"
+keywords: 大星，博客
 favicon: /favicon.ico
 timezone: Asia/Shanghai
 encoding: "utf-8"
