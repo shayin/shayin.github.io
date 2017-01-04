@@ -8,7 +8,6 @@ keywords: 源码，Laravel
 
 # Cache分析
 
-
 ### 开始
 Cache::get('cacheKey')使用的是facade，从config/app.php里面可以找到使用的facade别名，并从providers数组里面找到CacheServiceProvider
 
