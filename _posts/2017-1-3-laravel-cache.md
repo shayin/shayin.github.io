@@ -3,7 +3,7 @@ layout: post
 title: Laravel源码阅读——Cache
 categories: Laravel源码
 description: 简单分析Laravel的Cache。
-keywords: 源码，Laravel
+keywords: 源码，Laravel 
 ---
 
 # Cache分析
@@ -11,7 +11,9 @@ keywords: 源码，Laravel
 
 ### 开始
 Cache::get('cacheKey')使用的是facade，从config/app.php里面可以找到使用的facade别名，并从providers数组里面找到CacheServiceProvider
+
 ```php
+
 'aliases' => [
     ...
     'Cache'     => Illuminate\Support\Facades\Cache::class,
@@ -22,6 +24,7 @@ Cache::get('cacheKey')使用的是facade，从config/app.php里面可以找到�
     Illuminate\Cache\CacheServiceProvider::class,
     ...
 ]
+
 ```
 
 ### CacheServiceProvider
@@ -51,32 +54,44 @@ public function register()
 
 ### CacheManager
 首先研究get方法
+
 ```php
+
 protected function get($name)
 {
     return isset($this->stores[$name]) ? $this->stores[$name] : $this->resolve($name);
 }
+
 ```
+
 get方法是protected，调用的时候会跑到魔术方式__call去
+
 ```php
+
 public function __call($method, $parameters)
 {
     return call_user_func_array([$this->store(), $method], $parameters);
 }
+
 ```
+
 调用$this->store()，获取默认驱动名
+
 ```php
+
 public function store($name = null)
 {
     $name = $name ?: $this->getDefaultDriver();
 
     return $this->stores[$name] = $this->get($name);
 }
+
 ```
 
 调用$this->get()，调用$this->resolve("memcached")
 
 ```php
+
 protected function resolve($name)
 {
     // 获取memcached驱动配置
@@ -99,10 +114,13 @@ protected function resolve($name)
         }
     }
 }
+
 ```
 
 调用$this->createMemcachedDriver($config)
+
 ```php
+
 protected function createMemcachedDriver(array $config)
 {
     $prefix = $this->getPrefix($config);
@@ -113,9 +131,13 @@ protected function createMemcachedDriver(array $config)
     // 将封装过的memcached类MemcachedStore，返回一个Repository
     return $this->repository(new MemcachedStore($memcached, $prefix));
 }
+
 ```
+
 其实最后就是调用如下代码
+
 ```php
+
 $object = new Illuminate\Cache\Repository(new MemcachedStore($memcached, $prefix));
 $object->get('cacheKey');
 
@@ -125,6 +147,7 @@ $object->get('cacheKey');
 
 
 ```
+
 graph TB
 Cache::get --> CacheFacade
 CacheFacade --> CacheServerProvider
