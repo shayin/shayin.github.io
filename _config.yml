@@ -54,6 +54,8 @@ subscribe_rss: /feed.xml
 # ---------------- #
 #      Jekyll      #
 # ---------------- #
+github: [metadata]
+safe: true
 markdown: kramdown
 kramdown:
     input: GFM
