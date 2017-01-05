@@ -2,9 +2,9 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url:
+url: http://weibo.com/u/2186018303/home?wvr=5
 date_format: "ordinal"
-title: 大星博客
+title: Huang大星星
 subtitle: "一步一积累"
 description: "大星的个人博客"
 keywords: 大星，博客
@@ -105,11 +105,11 @@ lazy_load_duoshuo: true
 #    Analytics     #
 # ---------------- #
 google:
-    analytics_id: UA-80669434-1
+    analytics_id: UA-89858015-1
 
 # ---------------- #
 #      Datas       #
 # ---------------- #
-skill_software_keywords: [Java, C++, Python, Design Patterns]
+skill_software_keywords: [PHP, NodeJs, JavaScript, Laravel]
 skill_mobile_app_keywords: [Android, Reverse Engineering]
 skill_windows_keywords: [Win32 SDK, DuiLib, WTL, COM, WinDbg]
