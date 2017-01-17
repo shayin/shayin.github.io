@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
+description: 一步一积累
 keywords: shayin Huang_大星星
 comments: true
 menu: 关于
