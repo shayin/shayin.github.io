@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于静态方法、单例模式以及连接池
-categories: php
+categories: PHP
 description: 关于静态方法、单例模式以及连接池。
 keywords: php，静态方法，单例模式，连接池
 ---
